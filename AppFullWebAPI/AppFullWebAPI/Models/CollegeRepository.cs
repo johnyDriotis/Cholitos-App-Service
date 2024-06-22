@@ -6,15 +6,15 @@
             {
                 new Student{
                     Id = 1,
-                    StudentName = "Nombre de estudiante #1",
-                    Address = "Direccion estudiante #1",
-                    Email = "studiante1@gmail.com"
+                    StudentName = "Carlos",
+                    Address = "Ahuachapan, Colonia Santa Maria 2",
+                    Email = "carlos@gmail.com"
                 },
                 new Student{
                     Id = 2,
-                    StudentName = "Nombre de estudiante #2",
-                    Address = "Direccion estudiante #2",
-                    Email = "studiante2@gmail.com"
+                    StudentName = "Jose",
+                    Address = "San Salvador, colonia Escalon",
+                    Email = "jose@gmail.com"
                 }
             };
     }
