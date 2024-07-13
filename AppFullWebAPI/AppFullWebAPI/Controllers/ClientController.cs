@@ -1,8 +1,8 @@
-﻿using AppFullWebAPI.Models;
+﻿using CholitosGymWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
 
-namespace AppFullWebAPI.Controllers
+namespace CholitosGymWebAPI.Controllers
 {
 
     [ApiController] // Se le indica al controlador que pertenece a web api.
@@ -56,7 +56,7 @@ namespace AppFullWebAPI.Controllers
         [Route(template: "{name:alpha}", Name = "GetClientByName")]
         public ActionResult GetClientByName(string name)
         {
-            var foundClient = ClientRepository.Clients.Where(x => x.PrimerNombre?.ToLower() == name).FirstOrDefault();
+            var foundClient = ClientRepository.Clients.Where(x => x.PrimerNombre?.ToLower() == name.ToLower()).FirstOrDefault();
 
             // NotFound - 404 - NotFound - No data found
             if (foundClient == null)

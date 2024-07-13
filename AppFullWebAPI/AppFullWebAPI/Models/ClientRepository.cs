@@ -1,4 +1,4 @@
-﻿namespace AppFullWebAPI.Models
+﻿namespace CholitosGymWebAPI.Models
 {
     public static class ClientRepository
     {
