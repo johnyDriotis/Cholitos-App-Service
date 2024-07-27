@@ -149,5 +149,43 @@ namespace CholitosGymWebAPI.Controllers
             // BadRequest - 400 - BadRequest - Error no controlado
             return BadRequest("No se pudo controlar el error");
         }
+
+        [HttpPost]
+        [Route(template:"Create", Name = "CreateStudent")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<ClientDTO> CreateClient([FromBody] ClientDTO model) {
+
+            int newStudentId = 0;
+            Client clientDb = new Client();
+
+            if (model == null || string.IsNullOrEmpty(model.PrimerNombre) || string.IsNullOrEmpty(model.SegundoNombre) ||
+                string.IsNullOrEmpty(model.PrimerApellido) || string.IsNullOrEmpty(model.SegundoApellido))
+                return BadRequest();
+
+            newStudentId = ClientRepository.Clients.LastOrDefault().Id + 1;
+
+            if (newStudentId != 0) {
+                clientDb = new Client()
+                {
+                    ApellidoCasada = model.ApellidoCasada,
+                    Edad = model.Edad,
+                    Genero = model.Genero,
+                    PrimerApellido = model.PrimerApellido,
+                    PrimerNombre = model.PrimerNombre,
+                    SegundoApellido = model.SegundoApellido,
+                    SegundoNombre = model.SegundoNombre,
+                    TercerNombre = model.TercerNombre,
+                    Id = newStudentId
+                };
+
+                ClientRepository.Clients.Add(clientDb);
+            }
+            
+            model.CodigoCliente = clientDb.Id;
+
+            return Ok(model);
+
+        }
     }
 }
