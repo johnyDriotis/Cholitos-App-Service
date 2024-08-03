@@ -105,14 +105,14 @@ namespace CholitosGymWebAPI.Controllers
             {
                 clientDto.CodigoCliente = foundClient.Id;
                 clientDto.CorreoElectronico = "No tiene correo electronico";
-                clientDto.TercerNombre = foundClient.TercerNombre;
-                clientDto.SegundoNombre = foundClient.SegundoNombre;
-                clientDto.PrimerNombre = foundClient.PrimerNombre;
-                clientDto.ApellidoCasada = foundClient.ApellidoCasada;
-                clientDto.Edad = foundClient.Edad;
-                clientDto.Genero = "M";
-                clientDto.PrimerApellido = foundClient.PrimerApellido;
-                clientDto.SegundoApellido = foundClient.SegundoApellido;
+                //clientDto.TercerNombre = foundClient.TercerNombre;
+                //clientDto.SegundoNombre = foundClient.SegundoNombre;
+                //clientDto.PrimerNombre = foundClient.PrimerNombre;
+                //clientDto.ApellidoCasada = foundClient.ApellidoCasada;
+                //clientDto.Edad = foundClient.Edad;
+                //clientDto.Genero = "M";
+                //clientDto.PrimerApellido = foundClient.PrimerApellido;
+                //clientDto.SegundoApellido = foundClient.SegundoApellido;
 
                 return Ok(foundClient);
             }
@@ -152,7 +152,7 @@ namespace CholitosGymWebAPI.Controllers
 
         [HttpPost]
         [Route(template:"Create", Name = "CreateStudent")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<ClientDTO> CreateClient([FromBody] ClientDTO model) {
 
@@ -184,7 +184,7 @@ namespace CholitosGymWebAPI.Controllers
             
             model.CodigoCliente = clientDb.Id;
 
-            return Ok(model);
+            return CreatedAtRoute("GetClientById", new { id = model.CodigoCliente }, model);
 
         }
     }
