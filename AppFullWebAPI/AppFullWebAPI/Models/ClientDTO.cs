@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using CholitosGymWebApi.Validators;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace CholitosGymWebApi.Models
@@ -11,6 +12,7 @@ namespace CholitosGymWebApi.Models
         public int CodigoCliente { get; set; }
 
         [Range(minimum: 1, maximum: 100, ConvertValueInInvariantCulture = false, ErrorMessage = "La Edad debe estar entre 1 y 100 anios")]
+        [ValidateMayorEdad]
         public int Edad { get; set; }
         #endregion
 
