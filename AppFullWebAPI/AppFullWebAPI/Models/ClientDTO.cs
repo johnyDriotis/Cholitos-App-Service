@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace CholitosGymWebApi.Models
 {
     public class ClientDTO
     {
         #region Propiedades Not Null
+
+        [ValidateNever] // Permite que no se valide nunca una propiedad aunque la propiedad sea not null.
         public int CodigoCliente { get; set; }
 
         [Range(minimum: 1, maximum: 100, ConvertValueInInvariantCulture = false, ErrorMessage = "La Edad debe estar entre 1 y 100 anios")]
@@ -30,6 +33,8 @@ namespace CholitosGymWebApi.Models
 
         [EmailAddress(ErrorMessage = "El correo electronico es invaalido")]
         public string? CorreoElectronico { get; set; }
+
+        public DateTime FechaNacimiento { get; set; }
         #endregion
     }
 }

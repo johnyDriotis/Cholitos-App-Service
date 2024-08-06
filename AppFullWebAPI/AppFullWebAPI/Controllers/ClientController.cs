@@ -163,9 +163,16 @@ namespace CholitosGymWebAPI.Controllers
                 string.IsNullOrEmpty(model.PrimerApellido) || string.IsNullOrEmpty(model.SegundoApellido))
                 return BadRequest();
 
+            if (model.FechaNacimiento < DateTime.Now.AddDays(-100))
+            {
+                ModelState.AddModelError(key: "FechaNacimientoValidation", errorMessage: "La fecha de nacimiento es menor a 1924, la persona tiene 101 años.");
+                return BadRequest(ModelState);
+            }
+
             newStudentId = ClientRepository.Clients.LastOrDefault().Id + 1;
 
             if (newStudentId != 0) {
+
                 clientDb = new Client()
                 {
                     ApellidoCasada = model.ApellidoCasada,
@@ -177,6 +184,7 @@ namespace CholitosGymWebAPI.Controllers
                     SegundoNombre = model.SegundoNombre,
                     TercerNombre = model.TercerNombre,
                     Id = newStudentId
+
                 };
 
                 ClientRepository.Clients.Add(clientDb);
