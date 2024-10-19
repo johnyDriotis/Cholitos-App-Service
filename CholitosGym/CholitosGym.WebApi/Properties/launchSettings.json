@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "CholitosGymWebAPI": {
+    "CholitosGym.WebApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

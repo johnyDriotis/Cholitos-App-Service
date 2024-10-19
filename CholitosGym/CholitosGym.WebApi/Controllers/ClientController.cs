@@ -1,9 +1,9 @@
-﻿using CholitosGymWebApi.Models;
-using CholitosGymWebAPI.Models;
+﻿using CholitosGym.WebApi.Models;
+using CholitosGym.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
 
-namespace CholitosGymWebAPI.Controllers
+namespace CholitosGym.WebApi.Controllers
 {
 
     [ApiController] // Se le indica al controlador que pertenece a web api.

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CholitosGymWebApi.Validators
+namespace CholitosGym.WebApi.Validators
 {
     public class ValidateMayorEdadAttribute : ValidationAttribute
     {
