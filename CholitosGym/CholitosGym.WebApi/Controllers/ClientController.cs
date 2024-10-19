@@ -128,7 +128,7 @@ namespace CholitosGym.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
-        [Route(template: "{id:int}", Name = "DeleteClient")]
+        [Route(template: "Delete/{id}", Name = "DeleteClient")]
         public ActionResult<bool> DeleteClient(int id) {
 
             // BadRequest - 400 - BadRequest - Client Error
