@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CholitosGymWebApi", "AppFullWebAPI\CholitosGymWebApi.csproj", "{C83B8ACA-854E-4DF8-93EC-E1848D65EBF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CholitosGym.WebApi", "CholitosGym.WebApi\CholitosGym.WebApi.csproj", "{3D25B1A3-2B46-441D-8515-734A494C2026}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C83B8ACA-854E-4DF8-93EC-E1848D65EBF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C83B8ACA-854E-4DF8-93EC-E1848D65EBF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C83B8ACA-854E-4DF8-93EC-E1848D65EBF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C83B8ACA-854E-4DF8-93EC-E1848D65EBF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D25B1A3-2B46-441D-8515-734A494C2026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D25B1A3-2B46-441D-8515-734A494C2026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D25B1A3-2B46-441D-8515-734A494C2026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D25B1A3-2B46-441D-8515-734A494C2026}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

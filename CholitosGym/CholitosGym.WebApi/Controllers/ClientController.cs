@@ -1,5 +1,6 @@
-﻿using CholitosGym.WebApi.Models;
+﻿using CholitosGym.WebApi.Domain;
 using CholitosGym.WebApi.Models;
+using CholitosGym.WebApi.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
 
@@ -151,7 +152,7 @@ namespace CholitosGym.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route(template:"Create", Name = "CreateStudent")]
+        [Route(template:"Create", Name = "CreateClient")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<ClientDTO> CreateClient([FromBody] ClientDTO model) {
@@ -194,6 +195,49 @@ namespace CholitosGym.WebApi.Controllers
 
             return CreatedAtRoute("GetClientById", new { id = model.CodigoCliente }, model);
 
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route(template: "UpdateClient", Name = "UpdateClientData")]
+        public ActionResult<ClientDTO> UpdateClientData(ClientDTO request)
+        {
+            // BadRequest - 400 - BadRequest - Client Error
+            if (request.CodigoCliente <= 0)
+                return BadRequest("El id debe ser mayor a 0");
+
+            var existingClient = ClientRepository.Clients.Where(x => x.Id == request.CodigoCliente).FirstOrDefault();
+
+            // NotFound - 404 - NotFound - No data found
+            if (existingClient == null)
+                return NotFound($"No se encontro el cliente con id {request.CodigoCliente}");
+
+            // Ok - 200 - Success
+            if (existingClient != null)
+            {
+                // Actualizamos el cliente, ahorita solo se hace de forma simulada.
+                var clientDto = new ClientDTO()
+                {
+                    CodigoCliente = request.CodigoCliente,
+                    Edad = request.Edad,
+                    CorreoElectronico = request.CorreoElectronico,
+                    ApellidoCasada = request.ApellidoCasada,
+                    FechaNacimiento = request.FechaNacimiento,
+                    Genero = request.Genero,
+                    PrimerApellido = request.PrimerApellido,
+                    PrimerNombre = request.PrimerNombre,
+                    SegundoApellido = request.SegundoApellido,
+                    SegundoNombre = request.SegundoNombre,
+                    TercerNombre = request.TercerNombre
+                };
+
+                return Ok(clientDto);
+            }
+
+            // BadRequest - 400 - BadRequest - Error no controlado
+            return BadRequest("No se pudo controlar el error");
         }
     }
 }

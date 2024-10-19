@@ -1,4 +1,4 @@
-﻿namespace CholitosGym.WebApi.Models
+﻿namespace CholitosGym.WebApi.Domain
 {
     public class Client
     {
