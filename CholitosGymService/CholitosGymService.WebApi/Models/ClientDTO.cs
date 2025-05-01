@@ -1,8 +1,8 @@
-﻿using CholitosGym.WebApi.Validators;
+﻿using CholitosGymService.WebApi.Validators;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 
-namespace CholitosGym.WebApi.Models
+namespace CholitosGymService.WebApi.Models
 {
     public class ClientDTO
     {

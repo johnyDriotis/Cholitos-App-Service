@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CholitosGym.WebApi.Validators
+namespace CholitosGymService.WebApi.Validators
 {
     public class ValidateMayorEdadAttribute : ValidationAttribute
     {
@@ -8,13 +8,14 @@ namespace CholitosGym.WebApi.Validators
         {
             var edad = Convert.ToInt32(value);
 
-            if (edad < 18) {
+            if (edad < 18)
+            {
                 return new ValidationResult("La edad del cliente debe ser mayor a 18 años. ");
             }
 
             return ValidationResult.Success;
 
-            
+
         }
     }
 }

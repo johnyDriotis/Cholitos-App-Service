@@ -1,10 +1,10 @@
-﻿using CholitosGym.WebApi.Domain;
-using CholitosGym.WebApi.Models;
-using CholitosGym.WebApi.Repository;
+﻿using CholitosGymService.WebApi.Domain;
+using CholitosGymService.WebApi.Models;
+using CholitosGymService.WebApi.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
 
-namespace CholitosGym.WebApi.Controllers
+namespace CholitosGymService.WebApi.Controllers
 {
 
     [ApiController] // Se le indica al controlador que pertenece a web api.
@@ -13,14 +13,16 @@ namespace CholitosGym.WebApi.Controllers
     {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [Route(template: "All", Name = "GetAllClients" )]
-        public ActionResult<IEnumerable<Client>> GetClients() {
+        [Route(template: "All", Name = "GetAllClients")]
+        public ActionResult<IEnumerable<Client>> GetClients()
+        {
 
             var clients = ClientRepository.Clients;
             var clientsDto = new List<ClientDTO>();
 
             // Forma normal de obtener y construir el DTO.
-            foreach (var a in clients) {
+            foreach (var a in clients)
+            {
 
                 ClientDTO clientDto = new ClientDTO();
 
@@ -129,7 +131,8 @@ namespace CholitosGym.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [Route(template: "Delete/{id}", Name = "DeleteClient")]
-        public ActionResult<bool> DeleteClient(int id) {
+        public ActionResult<bool> DeleteClient(int id)
+        {
 
             // BadRequest - 400 - BadRequest - Client Error
             if (id <= 0)
@@ -142,7 +145,8 @@ namespace CholitosGym.WebApi.Controllers
                 return NotFound($"No se encontro el cliente con id {id}");
 
             // Ok - 200 - Success
-            if (foundClient != null) {
+            if (foundClient != null)
+            {
                 ClientRepository.Clients.Remove(foundClient);
                 return Ok(true);
             }
@@ -152,10 +156,11 @@ namespace CholitosGym.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route(template:"Create", Name = "CreateClient")]
+        [Route(template: "Create", Name = "CreateClient")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<ClientDTO> CreateClient([FromBody] ClientDTO model) {
+        public ActionResult<ClientDTO> CreateClient([FromBody] ClientDTO model)
+        {
 
             int newStudentId = 0;
             Client clientDb = new Client();
@@ -172,7 +177,8 @@ namespace CholitosGym.WebApi.Controllers
 
             newStudentId = ClientRepository.Clients.LastOrDefault().Id + 1;
 
-            if (newStudentId != 0) {
+            if (newStudentId != 0)
+            {
 
                 clientDb = new Client()
                 {
@@ -190,7 +196,7 @@ namespace CholitosGym.WebApi.Controllers
 
                 ClientRepository.Clients.Add(clientDb);
             }
-            
+
             model.CodigoCliente = clientDb.Id;
 
             return CreatedAtRoute("GetClientById", new { id = model.CodigoCliente }, model);

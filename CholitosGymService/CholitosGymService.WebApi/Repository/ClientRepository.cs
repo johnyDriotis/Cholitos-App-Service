@@ -1,6 +1,6 @@
-﻿using CholitosGym.WebApi.Domain;
+﻿using CholitosGymService.WebApi.Domain;
 
-namespace CholitosGym.WebApi.Repository
+namespace CholitosGymService.WebApi.Repository
 {
     public static class ClientRepository
     {
