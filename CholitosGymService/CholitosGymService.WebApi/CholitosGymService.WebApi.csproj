@@ -19,4 +19,10 @@
     <ProjectReference Include="..\CholitosGymService.Infrastructure\CholitosGymService.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="libzkfpcsharp">
+      <HintPath>..\..\..\..\..\Users\johny\Downloads\zkfinger_sdk_v10.0-windows-lite-zk9500\ZKFinger SDK V10.0-Windows-Lite\C#\lib\x64\libzkfpcsharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

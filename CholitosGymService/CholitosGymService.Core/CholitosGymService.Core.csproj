@@ -3,7 +3,17 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="libzkfpcsharp">
+      <HintPath>..\..\..\..\..\Users\johny\Downloads\zkfinger_sdk_v10.0-windows-lite-zk9500\ZKFinger SDK V10.0-Windows-Lite\C#\lib\x64\libzkfpcsharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
 
 </Project>
