@@ -1,4 +1,4 @@
-﻿namespace CholitosGymService.Core.Interfaces
+﻿namespace CholitosGymService.Core.Interfaces.Configuration
 {
     public interface IProperties
     {

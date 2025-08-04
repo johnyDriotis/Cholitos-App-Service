@@ -6,7 +6,7 @@
 */
 ALTER TABLE Cliente
 ADD Estado CHAR(1) NOT NULL 
-CONSTRAINT Ck_Estado_02 DEFAULT ('A')
-CONSTRAINT Ck_Estado_01 CHECK (Estado IN ('A', 'I'))
+CONSTRAINT Ck_Estado_01 DEFAULT ('A')
+CONSTRAINT Ck_Estado_02 CHECK (Estado IN ('A', 'I'))
 
 

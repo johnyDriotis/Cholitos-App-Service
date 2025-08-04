@@ -1,12 +1,15 @@
 
 -- Crear tabla de membresias
+
+GO
 	CREATE TABLE Membresia(
-		IdMembresia		INT			NOT NULL	IDENTITY(1,1),
-		IdCliente		INT			NOT NULL,
-		FechaPago		DATETIME	NOT NULL,
-		FechaInicio		DATETIME	NOT NULL,
-		FechaFin		DATETIME	NOT NULL
+		IdMembresia		INT				NOT NULL	IDENTITY(1,1),
+		IdCliente		VARCHAR(10)		NOT NULL,
+		FechaPago		DATETIME		NOT NULL,
+		FechaInicio		DATETIME		NOT NULL,
+		FechaFin		DATETIME		NOT NULL
 	);
+
 GO
 
 -- Agregar llave primaria a tabla membresia

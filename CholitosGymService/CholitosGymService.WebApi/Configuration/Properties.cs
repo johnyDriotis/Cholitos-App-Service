@@ -1,4 +1,4 @@
-﻿using CholitosGymService.Core.Interfaces;
+﻿using CholitosGymService.Core.Interfaces.Configuration;
 
 namespace CholitosGymService.WebApi.Configuration
 {
@@ -10,11 +10,11 @@ namespace CholitosGymService.WebApi.Configuration
             this._configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
 
             // Obtener datos para conectarse al servidor de base de datos.
-            this.Server = configuration["CholitosAppFront.Configuration.Database:Host"] ?? "";
-            this.Database = configuration["CholitosAppFront.Configuration.Database:Database"] ?? "";
-            this.UserName = configuration["CholitosAppFront.Configuration.Database:UserDb"] ?? "";
-            this.Password = configuration["CholitosAppFront.Configuration.Database:Password"] ?? "";
-            this.IntegratedSecurity = configuration["CholitosAppFront.Configuration.Database:IntegratedSecurity"] ?? "";
+            this.Server = configuration["Gimnasio.Configuration.Database:Host"] ?? "";
+            this.Database = configuration["Gimnasio.Configuration.Database:Database"] ?? "";
+            this.UserName = configuration["Gimnasio.Configuration.Database:UserDb"] ?? "";
+            this.Password = configuration["Gimnasio.Configuration.Database:Password"] ?? "";
+            this.IntegratedSecurity = configuration["Gimnasio.Configuration.Database:IntegratedSecurity"] ?? "";
 
             if (Convert.ToBoolean(IntegratedSecurity))
             {
@@ -33,7 +33,7 @@ namespace CholitosGymService.WebApi.Configuration
         public string IntegratedSecurity { get; }
 
 
-        // Propiedades que no se necesita sean inyectadas por un servicio
+        // Propiedades no implementadas por IProperties
         public string ConnectionString { get; set; }
     }
 }

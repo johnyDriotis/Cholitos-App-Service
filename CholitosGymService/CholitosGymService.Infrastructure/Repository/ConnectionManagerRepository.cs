@@ -1,4 +1,5 @@
-﻿using CholitosGymService.Core.Interfaces;
+﻿using CholitosGymService.Core.Interfaces.Configuration;
+using CholitosGymService.Core.Interfaces.Repository;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -12,11 +13,10 @@ namespace CholitosGymService.Infrastructure.Repository
         private readonly IDbConnection _dbConnection;
 
         [Obsolete]
-        public ConnectionManagerRepository(IProperties properties)
+        public ConnectionManagerRepository(IProperties properties, IDbConnection dbConnection)
         {
             _properties = properties ?? throw new ArgumentNullException(nameof(properties));
-
-            _dbConnection = new SqlConnection(_properties.ConnectionString);
+            _dbConnection = dbConnection ?? throw new ArgumentNullException(nameof(dbConnection));
         }
 
         public string ConnectToDatabaseWithMessage()

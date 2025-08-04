@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace CholitosGymService.Core.Interfaces
+namespace CholitosGymService.Core.Interfaces.Repository
 {
     public interface IConnectionManagerRepository
     {

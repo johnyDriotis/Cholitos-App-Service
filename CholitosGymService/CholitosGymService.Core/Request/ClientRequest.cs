@@ -8,7 +8,7 @@ namespace CholitosGymService.Core.Request
 {
     public class ClientRequest
     {
-        public int IdCliente { get; set; }
+        public string HuellaDactilar { get; set; }
         public string PrimerNombre { get; set; }
         public string SegundoNombre { get; set; }
         public string PrimerApellido { get; set; }

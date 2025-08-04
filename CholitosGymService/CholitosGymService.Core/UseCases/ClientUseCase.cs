@@ -1,58 +1,48 @@
 ﻿using CholitosGymService.Core.Interfaces;
+using CholitosGymService.Core.Interfaces.Repository;
+using CholitosGymService.Core.Request;
+using CholitosGymService.Core.Response;
 using CholitosGymService.Core.UseCases.Interfaces;
+using System.Net;
 
 namespace CholitosGymService.Core.UseCases
 {
     public class ClientUseCase : IClientUseCase
     {
+        private readonly IClientRepository _clientRepository;
 
-        public ClientUseCase()
+        public ClientUseCase(IClientRepository clientRepository)
         {
-
+            _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
         }
 
+        public async Task<GenericResponse<string>> AddClient(ClientRequest clientRequest)
+        {
+            GenericResponseBd<string> genericResponseBd = new GenericResponseBd<string>();
+            GenericResponse<string> genericResponse = new GenericResponse<string>();
 
-        //private readonly IClientRepository _clientRepository;
+            genericResponseBd = await _clientRepository.AddClient(clientRequest);
 
-        //public ClientUseCase(IClientRepository clientRepository)
-        //{
-        //    _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
-        //}
+            if (genericResponseBd.IsError) {
+                return genericResponse = new GenericResponse<string>()
+                {
+                    HttpResponseStatus = new ResponseStatus { 
+                        StatusCode = HttpStatusCode.InternalServerError,
+                        Descripcion = "Ocurrio un error al agregar el cliente"
+                    },
+                    Item = ""
+                };
+            }
 
-        //public async Task<GenericResponse<List<ClientDto>>> GetAllClients()
-        //{
-        //    var response = await _clientRepository.GetAllClients();
-        //    return response;
-        //}
-
-        //public async Task<GenericResponse<ClientDto>> AddClient(ClientRequest clientRequest)
-        //{
-        //    var response = await _clientRepository.AddClient(clientRequest);
-        //    return response;
-        //}
-
-        //public async Task<GenericResponse<ClientDto>> ModifyClient(ClientRequest clientRequest)
-        //{
-        //    var response = await _clientRepository.ModifyClient(clientRequest);
-        //    return response;
-        //}
-
-        //public async Task<GenericResponse<ClientDto>> DeleteClient(ClientRequest clientRequest)
-        //{
-        //    var response = await _clientRepository.DeleteClient(clientRequest);
-        //    return response;
-        //}
-
-        //public async Task<GenericResponse<ClientDto>> ChangeStateClient(ClientRequest clientRequest)
-        //{
-        //    var response = await _clientRepository.ChangeStateClient(clientRequest);
-        //    return response;
-        //}
-
-        //public async Task<GenericResponse<ClientDto>> GetClientById(int idCliente)
-        //{
-        //    var response = await _clientRepository.GetClientById(idCliente);
-        //    return response;
-        //}
+            return genericResponse = new GenericResponse<string>()
+            {
+                HttpResponseStatus = new ResponseStatus
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Descripcion = genericResponseBd.SuccessMessage
+                },
+                Item = genericResponseBd.SuccessMessage
+            };
+        }
     }
 }
