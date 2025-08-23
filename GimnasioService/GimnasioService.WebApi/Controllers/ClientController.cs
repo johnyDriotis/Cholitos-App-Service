@@ -1,4 +1,5 @@
-﻿using GimnasioService.Core.Request;
+﻿using GimnasioService.Core.Dtos;
+using GimnasioService.Core.Request;
 using GimnasioService.Core.Response;
 using GimnasioService.Core.UseCases.Interfaces;
 using libzkfpcsharp;
@@ -22,7 +23,7 @@ namespace GimnasioService.WebApi.Controllers
         [Route(template: "Create", Name = "CreateClient")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public Task<GenericResponse<string>> CreateClient([FromBody] ClientRequest clientRequest)
+        public Task<GenericResponse<ClientDto>> CreateClient([FromBody] ClientRequest clientRequest)
         {
             return _clientUseCase.AddClient(clientRequest);
         }

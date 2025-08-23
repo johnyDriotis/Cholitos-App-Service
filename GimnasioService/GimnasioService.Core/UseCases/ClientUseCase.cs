@@ -1,4 +1,5 @@
-﻿using GimnasioService.Core.Interfaces;
+﻿using GimnasioService.Core.Dtos;
+using GimnasioService.Core.Interfaces;
 using GimnasioService.Core.Interfaces.Repository;
 using GimnasioService.Core.Request;
 using GimnasioService.Core.Response;
@@ -16,32 +17,39 @@ namespace GimnasioService.Core.UseCases
             _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
         }
 
-        public async Task<GenericResponse<string>> AddClient(ClientRequest clientRequest)
+        public async Task<GenericResponse<ClientDto>> AddClient(ClientRequest clientRequest)
         {
             GenericResponseBd<string> genericResponseBd = new GenericResponseBd<string>();
-            GenericResponse<string> genericResponse = new GenericResponse<string>();
+            GenericResponse<ClientDto> genericResponse = new GenericResponse<ClientDto>();
 
             genericResponseBd = await _clientRepository.AddClient(clientRequest);
 
             if (genericResponseBd.IsError) {
-                return genericResponse = new GenericResponse<string>()
+                return genericResponse = new GenericResponse<ClientDto>()
                 {
                     HttpResponseStatus = new ResponseStatus { 
                         StatusCode = HttpStatusCode.InternalServerError,
                         Descripcion = "Ocurrio un error al agregar el cliente"
                     },
-                    Item = ""
+                    Item = new()
                 };
             }
 
-            return genericResponse = new GenericResponse<string>()
+            return genericResponse = new GenericResponse<ClientDto>()
             {
                 HttpResponseStatus = new ResponseStatus
                 {
                     StatusCode = HttpStatusCode.OK,
                     Descripcion = genericResponseBd.SuccessMessage
                 },
-                Item = genericResponseBd.SuccessMessage
+                Item = new() { 
+                    CodigoCliente = genericResponseBd.Item,
+                    PrimerNombre = clientRequest.PrimerNombre,
+                    SegundoNombre = clientRequest.SegundoNombre,
+                    PrimerApellido = clientRequest.PrimerApellido,
+                    SegundoApellido = clientRequest.SegundoApellido,
+                    ApellidoCasada = clientRequest.ApellidoCasada,
+                }
             };
         }
     }

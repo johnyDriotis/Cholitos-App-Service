@@ -22,10 +22,9 @@ namespace CholitosAppFront.Infrastructure.Repository
 
         public async Task<GenericResponseBd<string>> AddClient(ClientRequest clientRequest)
         {
+            string clientCode = FunctionsUtils.GenerateGymCode(5);
             try
             {
-                string clientCode = FunctionsUtils.GenerateGymCode(5);
-
                 string query = ClientQuery.AddClient();
                 int res = await _dbConnection.ExecuteAsync(query, new
                 {
@@ -54,7 +53,8 @@ namespace CholitosAppFront.Infrastructure.Repository
             {
                 SuccessMessage = "Cliente agregado satisfactoriamente",
                 ErrorMessage = "",
-                IsError = false
+                IsError = false,
+                Item = clientCode
             };
         }
 

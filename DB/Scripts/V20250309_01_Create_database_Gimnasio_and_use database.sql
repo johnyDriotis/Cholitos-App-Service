@@ -1,4 +1,3 @@
-
 -- Crear base de datos.
 GO
 	CREATE DATABASE Gimnasio;

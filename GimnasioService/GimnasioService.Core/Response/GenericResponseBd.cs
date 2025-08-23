@@ -11,5 +11,6 @@ namespace GimnasioService.Core.Response
         public string SuccessMessage { get; set; }
         public string ErrorMessage { get; set; }
         public bool IsError { get; set; }
+        public T Item { get; set; }
     }
 }
