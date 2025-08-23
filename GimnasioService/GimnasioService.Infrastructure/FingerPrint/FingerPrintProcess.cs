@@ -18,7 +18,6 @@ namespace GimnasioService.Infrastructure.FingerPrintBackground
         private byte[] imageBuffer;
         private byte[] templateBuffer = new byte[2048];
         private int templateLen = 2048;
-        int RegisterCount = 0;
 
         public async Task<GenericResponseFingerPrint<FingerPrintDto>> FingerPrintCaptureThreeTimes(CancellationToken stoppingToken)
         {
@@ -63,8 +62,6 @@ namespace GimnasioService.Infrastructure.FingerPrintBackground
                     ErrorMessage = "Falló al abrir el dispositivo de huella dactilar. "
                 };
             }
-
-            RegisterCount = 0;
 
             byte[] paramValue = new byte[4];
             int size = 4;
@@ -140,7 +137,7 @@ namespace GimnasioService.Infrastructure.FingerPrintBackground
             {
                 Item = new FingerPrintDto()
                 {
-                    base64ImgsFingerPrint = base64ImgsFingerPrint
+                    Base64ImgsFingerPrint = base64ImgsFingerPrint
                 }
             };
         }

@@ -8,6 +8,6 @@ namespace GimnasioService.Core.Dtos
 {
     public class FingerPrintDto
     {
-        public List<string> base64ImgsFingerPrint { get; set; }
+        public List<string> Base64ImgsFingerPrint { get; set; }
     }
 }

@@ -1,27 +1,28 @@
 ﻿using GimnasioService.Core.Dtos;
 using GimnasioService.Core.Interfaces.FingerPrint;
 using GimnasioService.Core.Response;
+using GimnasioService.Core.UseCases.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GimnasioService.WebApi.Controllers.FingerPrint
+namespace GimnasioService.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class FingerPrintController : ControllerBase
     {
-        private readonly IFingerPrintProcess _fingerPrintProcess;
+        private readonly IFingerPrintUseCase _fingerPrintUseCase;
         private readonly CancellationToken _cancellationToken;
 
-        public FingerPrintController(IFingerPrintProcess fingerPrintProcess)
+        public FingerPrintController(IFingerPrintUseCase fingerPrintUseCase)
         {
-            _fingerPrintProcess = fingerPrintProcess ?? throw new ArgumentNullException(nameof(fingerPrintProcess));
+            _fingerPrintUseCase = fingerPrintUseCase ?? throw new ArgumentNullException(nameof(fingerPrintUseCase));
         }
 
         [HttpPost(template: "FingerPrintCaptureThreeTimes", Name = "CapturarHuellaDactilarTresVeces")]
         public async Task<GenericResponseFingerPrint<FingerPrintDto>> FingerPrintCaptureThreeTimes()
         {
-            return await _fingerPrintProcess.FingerPrintCaptureThreeTimes(_cancellationToken);
+            return await _fingerPrintUseCase.FingerPrintCaptureThreeTimes(_cancellationToken);
         }
     }
 }

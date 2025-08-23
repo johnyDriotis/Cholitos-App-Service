@@ -4,7 +4,7 @@ using GimnasioService.Core.UseCases.Interfaces;
 using libzkfpcsharp;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GimnasioService.WebApi.Controllers.Clientes
+namespace GimnasioService.WebApi.Controllers
 {
 
     [ApiController] // Se le indica al controlador que pertenece a web api.
