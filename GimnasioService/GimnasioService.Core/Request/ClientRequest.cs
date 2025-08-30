@@ -15,5 +15,6 @@ namespace GimnasioService.Core.Request
         public string SegundoApellido { get; set; }
         public string ApellidoCasada { get; set; }
         public string Estado { get; set; }
+        public string Usuario { get; set; }
     }
 }

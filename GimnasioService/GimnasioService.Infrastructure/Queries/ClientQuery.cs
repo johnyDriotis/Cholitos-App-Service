@@ -6,11 +6,11 @@
         {
             return @"INSERT INTO Cliente(
 	                    IdCliente, Base64HuellaDactilar, PrimerNombre, SegundoNombre, PrimerApellido, 
-	                    SegundoApellido, ApellidoCasada, Estado
+	                    SegundoApellido, ApellidoCasada, Estado, FechaAdicion, AdicionadoPor
                     ) 
                     VALUES(
                     	@CodCliente, @HuellaDactilar, @PrimerNombre, @SegundoNombre, @PrimerApellido, 
-                    	@SegundoApellido, @ApellidoCasada, @Estado
+                    	@SegundoApellido, @ApellidoCasada, @Estado, @FechaAdicion, @AdicionadoPor
                     );";
 
         }

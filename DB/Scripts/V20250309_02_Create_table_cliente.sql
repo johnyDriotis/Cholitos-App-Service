@@ -8,7 +8,13 @@ GO
 		SegundoNombre			VARCHAR(30)		NULL,
 		PrimerApellido			VARCHAR(30)		NOT NULL,
 		SegundoApellido			VARCHAR(30)		NULL,
-		ApellidoCasada			VARCHAR(30)		NULL
+		ApellidoCasada			VARCHAR(30)		NULL,
+		Estado					CHAR(1)			NOT NULL,
+
+		FechaAdicion			DATETIME		NOT NULL,
+		AdicionadoPor			VARCHAR(15)		NOT NULL,
+		FechaModificacion		DATETIME		NULL,
+		ModificadoPor			VARCHAR(15)		NULL
 	);
 GO
 
@@ -21,16 +27,26 @@ GO
 /*
 	Agregar UNIQUE Constraint al codigo del cliente
 */
-ALTER TABLE Cliente
-ADD CONSTRAINT Ck_IdCliente_01 UNIQUE(IdCliente)
+GO
+	ALTER TABLE Cliente
+	ADD CONSTRAINT Ck_Cliente_IdCliente_01 UNIQUE(IdCliente);
+GO
 
 /*
-	Crear columna Estado,
-	Crear default constraint.
-	Crear check constraint para valores A, I
+	Crear default constraint para Estado
 */
-ALTER TABLE Cliente
-ADD Estado CHAR(1) NOT NULL 
-CONSTRAINT Ck_Estado_01 DEFAULT ('A')
-CONSTRAINT Ck_Estado_02 CHECK (Estado IN ('A', 'I'))
+GO
+	ALTER TABLE Cliente
+	ADD CONSTRAINT Ck_Cliente_Estado_01 CHECK(Estado = 'A');
+GO
+
+
+/*
+	Crear check constraint para valores A, I para Estado
+*/
+GO
+	ALTER TABLE Cliente
+	ADD CONSTRAINT Ck_Cliente_Estado_02 CHECK (Estado IN ('A', 'I'));
+GO
+
 

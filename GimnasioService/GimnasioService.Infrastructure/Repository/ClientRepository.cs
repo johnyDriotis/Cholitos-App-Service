@@ -35,7 +35,9 @@ namespace CholitosAppFront.Infrastructure.Repository
                     @PrimerApellido = clientRequest.PrimerApellido,
                     @SegundoApellido = clientRequest.SegundoApellido,
                     @ApellidoCasada = clientRequest.ApellidoCasada,
-                    @Estado = clientRequest.Estado
+                    @Estado = clientRequest.Estado,
+                    @FechaAdicion = DateTime.UtcNow,
+                    @AdicionadoPor = clientRequest.Usuario
                 });
             }
             catch (Exception ex)

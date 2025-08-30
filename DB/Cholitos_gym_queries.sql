@@ -7,6 +7,8 @@ GO
 
 SELECT * FROM dbo.Cliente;
 
+DELETE FROM dbo.Cliente;
+
 SELECT 
 	IdCliente	[Codigo_Cliente],
 	CodigoGimnasio	[Codigo_Gimnasio],
